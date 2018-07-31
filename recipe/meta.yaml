@@ -15,7 +15,8 @@ source:
   sha256: 62a5aa97837ae95ef9f973d95fe45fe43dbbf482dfa922e9df60f3c510e7efe5
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   # r-maps is missing in win64 as well
   skip: true  # [win]
   rpaths:
@@ -24,11 +25,12 @@ build:
 
 requirements:
   build:
+    - posix                # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - r-base
     - r-maps >=2.3_0
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
