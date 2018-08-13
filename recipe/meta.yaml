@@ -1,5 +1,4 @@
-{% set version = "1.2.6" %}
-
+{% set version = '1.2.6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,35 +9,38 @@ package:
 source:
   fn: mapproj_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/mapproj_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/mapproj/mapproj_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/mapproj_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/mapproj/mapproj_{{ version }}.tar.gz
   sha256: 62a5aa97837ae95ef9f973d95fe45fe43dbbf482dfa922e9df60f3c510e7efe5
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-  # r-maps is missing in win64 as well
-  skip: true  # [win]
+  number: 2
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-maps >=2.3_0
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-maps >=2.3_0
 
 test:
   commands:
-    - $R -e "library('mapproj')"  # [not win]
+    - $R -e "library('mapproj')"           # [not win]
     - "\"%R%\" -e \"library('mapproj')\""  # [win]
 
 about:
@@ -51,3 +53,6 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
