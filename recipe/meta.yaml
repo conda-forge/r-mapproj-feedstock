@@ -15,7 +15,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 2
+  number: 3
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -56,3 +56,4 @@ extra:
     - daler
     - jdblischak
     - cbrueffer
+    - dbast
