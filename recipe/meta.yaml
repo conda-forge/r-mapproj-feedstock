@@ -14,8 +14,8 @@ source:
   sha256: f0081281b08bf3cc7052c4f1360d6d3c20d9063be57754448ad9b48ab0d34c5b
 
 build:
-  merge_build_host: True  # [win]
-  number: 0
+  merge_build_host: true  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -25,17 +25,17 @@ requirements:
   build:
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}make
-    - {{posix}}sed               # [win]
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-maps >=2.3_0
   run:
     - r-base
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}gcc-libs         # [win]
     - r-maps >=2.3_0
 
 test:
@@ -45,7 +45,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=mapproj
-  license: Lucent Public
+  license: Lucent Public License
   summary: Converts latitude/longitude into projected coordinates.
   license_family: OTHER
 
