@@ -3,7 +3,7 @@ About r-mapproj
 
 Home: https://CRAN.R-project.org/package=mapproj
 
-Package license: Lucent Public License
+Package license: LPL-1.02
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-mapproj-feedstock/blob/master/LICENSE.txt)
 
