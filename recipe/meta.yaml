@@ -45,7 +45,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=mapproj
-  license: LPL-1.02
+  license: Lucent Public License
   summary: Converts latitude/longitude into projected coordinates.
   license_family: OTHER
 
