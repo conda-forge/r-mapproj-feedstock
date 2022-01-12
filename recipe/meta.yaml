@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: mapproj_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/mapproj_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/mapproj/mapproj_{{ version }}.tar.gz
@@ -16,20 +15,20 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-maps >=2.3_0
@@ -45,7 +44,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=mapproj
-  license: Lucent Public License
+  license: LPL-1.02
   summary: Converts latitude/longitude into projected coordinates.
   license_family: OTHER
 
