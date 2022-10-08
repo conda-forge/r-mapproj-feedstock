@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -44,7 +44,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=mapproj
-  license: LPL-1.02
+  license: Lucent Public License
   summary: Converts latitude/longitude into projected coordinates.
   license_family: OTHER
 
