@@ -1,4 +1,4 @@
-{% set version = "1.2.9" %}
+{% set version = "1.2.11" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/mapproj_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/mapproj/mapproj_{{ version }}.tar.gz
-  sha256: da28fab490072e0b2ff5e124092d6b3146e4c01b2386e23a2ea4b0e9fc72df82
+  sha256: db2d201cc939de26717566066bf44225a967ccde6fc34731af845f03c086347d
 
 build:
   merge_build_host: true  # [win]
