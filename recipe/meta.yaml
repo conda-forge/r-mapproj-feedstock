@@ -12,7 +12,7 @@ source:
   sha256: db2d201cc939de26717566066bf44225a967ccde6fc34731af845f03c086347d
 
 build:
-  number: 2
+  number: 3
   rpaths:
     - lib/R/lib/
     - lib/
@@ -29,6 +29,7 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-maps >=2.3_0               # [build_platform != target_platform]
   host:
     - r-base
     - r-maps >=2.3_0
@@ -45,7 +46,6 @@ about:
   home: https://CRAN.R-project.org/package=mapproj
   license: LPL-1.02
   summary: Converts latitude/longitude into projected coordinates.
-  license_family: OTHER
   license_file:
     - LICENSE.note
 
